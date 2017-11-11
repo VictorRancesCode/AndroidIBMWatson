@@ -11,18 +11,28 @@ import android.widget.TextView;
 
 import com.ibm.watson.developer_cloud.android.library.camera.CameraHelper;
 import com.ibm.watson.developer_cloud.visual_recognition.v3.VisualRecognition;
-import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifyImagesOptions;
-import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ImageClassification;
-import com.ibm.watson.developer_cloud.visual_recognition.v3.model.VisualClassification;
-import com.ibm.watson.developer_cloud.visual_recognition.v3.model.VisualClassifier;
+import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassResult;
+import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifiedImage;
+import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifiedImages;
+import com.ibm.watson.developer_cloud.visual_recognition.v3.model.Classifier;
+//import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifyImagesOptions;
+import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifierResult;
+import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifyOptions;
+//import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ImageClassification;
+//import com.ibm.watson.developer_cloud.visual_recognition.v3.model.VisualClassification;
+//import com.ibm.watson.developer_cloud.visual_recognition.v3.model.VisualClassifier;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.List;
+
+import static com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifyOptions.AcceptLanguage.ES;
 
 public class clsVisualRecognition extends AppCompatActivity {
     private VisualRecognition vrClient;
     private CameraHelper helper;
 
-    String API_KEY= "YOUR API KEY";
+    String API_KEY = "YOUR API KEY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,31 +65,31 @@ public class clsVisualRecognition extends AppCompatActivity {
             AsyncTask.execute(new Runnable() {
                 @Override
                 public void run() {
-                    VisualClassification response =
-                            vrClient.classify(new ClassifyImagesOptions.Builder().images(photoFile).build()).execute();
-                    // More code here
-                    ImageClassification classification =
-                            response.getImages().get(0);
 
-                    VisualClassifier classifier =
-                            classification.getClassifiers().get(0);
-
-                    final StringBuffer output = new StringBuffer();
-                    for(VisualClassifier.VisualClass object: classifier.getClasses()) {
-                        if(object.getScore() > 0.7f)
-                            output.append("<")
-                                    .append(object.getName())
-                                    .append("> ");
-                    }
-
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            TextView detectedObjects =
-                                    findViewById(R.id.detected_objects);
-                            detectedObjects.setText(output);
+                    try {
+                        ClassifiedImages response = vrClient.classify(new ClassifyOptions.Builder().acceptLanguage(ES).imagesFile(photoFile).build()).execute();
+                        ClassifiedImage image = response.getImages().get(0);
+                        List<ClassifierResult> list = image.getClassifiers();
+                        ClassifierResult x = list.get(0);
+                        List<ClassResult> resultado = x.getClasses();
+                        String datos="Resultado: \n";
+                        for (int i = 0; i < resultado.size(); i++) {
+                            if (resultado.get(i).getScore() > 0.5f) {
+                                datos+=resultado.get(i).getClassName()+", ";
+                            }
                         }
-                    });
+                        final String res =datos;
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                TextView detectedObjects =
+                                        findViewById(R.id.detected_objects);
+                                detectedObjects.setText(res.toString());
+                            }
+                        });
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
                 }
             });
 
