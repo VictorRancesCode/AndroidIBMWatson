@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/WatsonTTS"
+            android:icon="@android:drawable/ic_lock_silent_mode_off"
+            android:title="Watson TTS" />
+        <item
+            android:id="@+id/VisualRecognition"
+            android:icon="@android:drawable/ic_menu_view"
+            android:title="Visual Recognition" />
+        <item
+            android:id="@+id/SpeechToText"
+            android:icon="@android:drawable/ic_btn_speak_now"
+            android:title="Speech To Text" />
+        <item
+            android:id="@+id/LanguageTranslator"
+            android:icon="@android:drawable/ic_menu_sort_alphabetically"
+            android:title="Language Translator" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+        </menu>
+    </item>
+
+</menu>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.codigopanda.androidibmwatson.clsLanguageTranslator">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimary"
+        android:textSize="40dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:text="Lenguage Translator" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Traductor"
+        android:textStyle="bold" />
+
+    <RadioGroup
+        android:id="@+id/target_language"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/spanish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/spanish" />
+
+        <RadioButton
+            android:id="@+id/french"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/french" />
+
+        <RadioButton
+            android:id="@+id/italian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/italian" />
+        <RadioButton
+            android:id="@+id/english"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/english" />
+
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/inputtranslator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lines="8"
+        android:gravity="top|start"
+        android:hint="@string/input_hint" />
+
+    <Button
+        android:id="@+id/translate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#fff"
+        android:background="@color/colorPrimary"
+        android:text="@string/translate" />
+
+
+    <TextView
+        android:id="@+id/translated_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

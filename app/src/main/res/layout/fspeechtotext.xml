@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.codigopanda.androidibmwatson.clsSpeechToText">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:textSize="40dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="Speech To Text" />
+
+        <EditText
+            android:id="@+id/input"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:lines="10"
+            android:gravity="top|start"
+            android:hint="texto generado" />
+
+        <ImageButton
+            android:id="@+id/mic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="grabar voz"
+            android:background="@color/colorPrimary"
+            android:src="@android:drawable/ic_btn_speak_now" />
+
+    </LinearLayout>
+</RelativeLayout>

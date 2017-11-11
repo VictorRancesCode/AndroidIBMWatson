@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">AndroidIBMWatson</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="api_key">c741fb9bd4e44b95f5e72eb28695b6f4558dd574</string>
+    <string name="speech_text_url"></string>
+
+    <string name="translation_label">Translation:</string>
+    <string name="translate">translate</string>
+    <string name="input_hint">Introducir Texto</string>
+    <string name="spanish">Spanish</string>
+    <string name="english">English</string>
+    <string name="french">French</string>
+    <string name="italian">Italian</string>
+</resources>
